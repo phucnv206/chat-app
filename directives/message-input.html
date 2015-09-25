@@ -1,0 +1,34 @@
+<div class="ui bottom visible sidebar">
+    <div class="ui padded grid container">
+        <div class="twelve wide column">
+            <form ng-submit="inputCtrl.newMessage()">
+                <div class="ui middle aligned grid">
+                    <div class="twelve wide column">
+                        <div class="ui form">
+                            <div class="field">
+                                <textarea rows="3" ng-model="inputCtrl.message" placeholder="Nhập nội dung..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="four wide column">
+                        <button class="ui circular icon button"><i class="send icon"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="four wide column">
+            <button class="ui circular facebook icon button">
+                <i class="facebook icon"></i>
+            </button>
+            <button class="ui circular twitter icon button">
+                <i class="twitter icon"></i>
+            </button>
+            <button class="ui circular linkedin icon button">
+                <i class="linkedin icon"></i>
+            </button>
+            <button class="ui circular google plus icon button">
+                <i class="google plus icon"></i>
+            </button>
+        </div>
+    </div>
+</div>

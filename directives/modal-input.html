@@ -1,0 +1,44 @@
+<div class="ui small modal" id="new-form">
+    <i class="close icon"></i>
+    <div class="header">
+        Profile
+    </div>
+    <div class="content">
+        <form name="profileForm" class="ui form" id="profile-form">
+            <div class="field">
+                <label>Nickname:</label>
+                <input type="text" placeholder="Nickname" name="nickname" ng-model="nickname">
+            </div>
+            <div class="inline fields">
+                <label for="gender">Gender:</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="gender" checked="checked" class="hidden">
+                        <label>Male</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="gender" class="hidden">
+                        <label>Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="ui horizontal divider">Choose your icon</div>
+                <div class="ui eight column grid">
+                    <div class="center aligned column" ng-repeat="icon in modalCtrl.icons">
+                        <i class="bordered {{ icon }} large link icon" ng-click="modalCtrl.selectIcon($index)" ng-class="{'inverted': modalCtrl.isSelected($index)}"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ui submit button" id="profile-submit" style="display: none" ng-click="modalCtrl.newProfile()"></div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui positive right labeled icon button">
+            Join now!
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>

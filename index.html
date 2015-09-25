@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chat">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="static/semantic/dist/semantic.min.css">
+	</head>
+	<body>
+		<side-menu class="ui left sidebar vertical menu" id="sidebar-menu"></side-menu>
+		<div class="pusher">
+			<side-menu-mobile class="ui menu" id="sidebar-btn"></side-menu-mobile>
+			<modal-input></modal-input>
+			<message-content></message-content>
+			<message-input></message-input>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="static/js/ng-socket-io.min.js"></script>
+		<script src="static/js/app.js"></script>
+		<script src="static/semantic/dist/semantic.min.js"></script>
+	</body>
+</html>
