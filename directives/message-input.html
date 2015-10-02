@@ -1,20 +1,26 @@
 <div class="ui bottom visible sidebar">
     <div class="ui padded grid container">
         <div class="twelve wide column">
-            <form ng-submit="inputCtrl.newMessage()">
+            <form ng-submit="inputCtrl.newMessage()" ng-show="inputCtrl.profile">
                 <div class="ui middle aligned grid">
                     <div class="twelve wide column">
                         <div class="ui form">
                             <div class="field">
-                                <textarea rows="3" ng-model="inputCtrl.message" placeholder="Nhập nội dung..."></textarea>
+                                <textarea rows="1" id="message-field" ng-model="inputCtrl.message" placeholder="Type a message here"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="four wide column">
-                        <button class="ui circular icon button"><i class="send icon"></i></button>
+                        <button class="ui circular icon button" id="send-btn"><i class="send icon"></i></button>
                     </div>
                 </div>
             </form>
+            <div class="fluid ui animated fade orange button" ng-hide="inputCtrl.profile" ng-click="inputCtrl.showProfileModal()">
+                <div class="visible content">Start chatting now!</div>
+                <div class="hidden content">
+                    OK
+                </div>
+            </div>
         </div>
         <div class="four wide column">
             <button class="ui circular facebook icon button">

@@ -10,32 +10,38 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-io.on('connection', function(socket) {
-    socket.on('disconnect', function() {
 
+var users = {};
+io.on('connection', function(socket) {
+    socket.on('disconnect', function(client) {
+        socket.broadcast.emit('out user', socket.id);
+        delete users[socket.id];
     });
     db.collection('message').find().toArray(function(err, result) {
         if (err) throw err;
-        if (result) socket.emit('get all messages', result);
+        if (result) {
+            socket.emit('get all messages', result);
+        }
+        socket.emit('get all users', users);
+    });
+    socket.on('new user', function(user) {
+        users[socket.id] = user;
+        var data = {};
+        data[socket.id] = user;
+        socket.broadcast.emit('new user', data);
     });
     socket.on('new message', function(msg) {
         var data = {
             text: msg,
-            date: new Date()
+            date: new Date(),
+            user: users[socket.id]
         };
         db.collection('message').insert(data, function(err, result) {
             if (err) throw err;
-            if (result) socket.broadcast.emit('get new message', data);
+            if (result) socket.broadcast.emit('new message', data);
         });
     });
 });
-
-// app.get('/', function(req, res){
-// 	db.collection('message').find().toArray(function(err, result) {
-// 		if (err) throw err;
-// 	  	console.log(result);
-// 	});
-// });
 
 http.listen(3000, function() {
     console.log('listening');

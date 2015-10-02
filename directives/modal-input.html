@@ -1,27 +1,22 @@
-<div class="ui small modal" id="new-form">
+<div class="ui small modal" id="profile-modal">
     <i class="close icon"></i>
     <div class="header">
         Profile
     </div>
     <div class="content">
-        <form name="profileForm" class="ui form" id="profile-form">
-            <div class="field">
-                <label>Nickname:</label>
-                <input type="text" placeholder="Nickname" name="nickname" ng-model="nickname">
-            </div>
-            <div class="inline fields">
-                <label for="gender">Gender:</label>
+        <div class="ui form" id="profile-form">
+            <div class="two fields">
                 <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="gender" checked="checked" class="hidden">
-                        <label>Male</label>
-                    </div>
+                    <label>Nickname:</label>
+                    <input type="text" placeholder="Nickname" name="nickname" ng-model="modalCtrl.profile.nickname">
                 </div>
                 <div class="field">
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="gender" class="hidden">
-                        <label>Female</label>
-                    </div>
+                    <label>Gender</label>
+                    <select name="gender" class="ui dropdown" ng-model="modalCtrl.profile.gender">
+                        <option value="">Gender</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
                 </div>
             </div>
             <div class="field">
@@ -32,8 +27,9 @@
                     </div>
                 </div>
             </div>
-            <div class="ui submit button" id="profile-submit" style="display: none" ng-click="modalCtrl.newProfile()"></div>
-        </form>
+            <div style="display: none" class="ui submit button" id="profile-submit" ng-click="modalCtrl.newProfile()"></div>
+            <div class="ui error message"></div>
+        </div>
     </div>
     <div class="actions">
         <div class="ui positive right labeled icon button">
